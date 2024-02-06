@@ -8,6 +8,7 @@ Challenge:
 
 const modal = document.getElementById("modal");
 const modalCloseBtn = document.querySelector("#modal-close-btn");
+const consentForm = document.querySelector("#consent-form");
 
 setTimeout(function () {
   modal.style.display = "block";
@@ -15,4 +16,8 @@ setTimeout(function () {
 
 modalCloseBtn.addEventListener("click", () => {
   modal.style.display = "none";
+});
+
+consentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 });
