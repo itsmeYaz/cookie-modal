@@ -1,7 +1,9 @@
 const modal = document.getElementById("modal");
 const modalCloseBtn = document.querySelector("#modal-close-btn");
+const declineBtn = document.querySelector("#decline-btn");
 const consentForm = document.querySelector("#consent-form");
 const modalText = document.querySelector("#modal-text");
+const modalChoiceBtns = document.querySelector("#modal-choice-btns");
 
 setTimeout(function () {
   modal.style.display = "block";
@@ -9,6 +11,10 @@ setTimeout(function () {
 
 modalCloseBtn.addEventListener("click", () => {
   modal.style.display = "none";
+});
+
+declineBtn.addEventListener("mouseenter", () => {
+  modalChoiceBtns.classList.toggle("reverse");
 });
 
 consentForm.addEventListener("submit", (e) => {
