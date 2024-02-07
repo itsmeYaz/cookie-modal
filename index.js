@@ -1,11 +1,3 @@
-/*
-Challenge:
-1. Take control of the 'modal' div with JavaScript.
-2. Swap out our console.log for a line of code
-   which will change the CSS 'display' property
-   of our modal to 'inline'.
-*/
-
 const modal = document.getElementById("modal");
 const modalCloseBtn = document.querySelector("#modal-close-btn");
 const consentForm = document.querySelector("#consent-form");
@@ -22,6 +14,11 @@ modalCloseBtn.addEventListener("click", () => {
 consentForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const consentFormData = new FormData(consentForm);
+
+  const name = consentFormData.get("fullName");
+  console.log(name);
+
   modalText.innerHTML = `
   <div class="modal-inner-loading">
     <img src="images/loading.svg" class="loading">
@@ -37,11 +34,11 @@ consentForm.addEventListener("submit", (e) => {
 
   setTimeout(() => {
     document.querySelector("#modal-inner").innerHTML = `
-    <h2>Thanks you sucker! </h2>
+    <h2>Thanks <span class="modal-display-name">${name}</span>, you sucker! </h2>
     <p>We just sold the rights to your eternal soul.</p>
     <div class="idiot-gif">
         <img src="images/pirate.gif">
-    </div>
-    `;
+    </div>`;
+    modalCloseBtn.disabled = false;
   }, 3000);
 });
